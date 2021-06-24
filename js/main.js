@@ -506,6 +506,10 @@ function handleNewDate(e) {
     const hourCost = st.students[index].hourCost
     const note = st.students[index].presentNote
     st.students[index].addPresentDate(newValue, hourLength, hourCost, note) 
+    if (!st.students[index].addPresentDate(newValue, hourLength,
+            hourCost, note)) {
+        return
+    }  
     st.students[index].presentNote = st.students[index].present[0].note
     st.setData()
     changeTextData.target.innerHTML = st.students[index].present[0].date
