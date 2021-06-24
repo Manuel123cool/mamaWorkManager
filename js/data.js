@@ -172,14 +172,19 @@ class Student {
         return array;
     }
     addPresentDate(date, hourLength, hourCost, note) {
-        if (date == "") {
+        const regex = new RegExp("^20[0-9]{2}-[0-1][0-9]-[0-3][0-9]$")
+        let months = Number(date.substring(5, 7))
+        let days = Number(date.substring(8, 11))
+        if (!regex.test(date) && days <= 31 && months <= 12) {
             alert("Datum gibt es nicht")
+            return false
         } else {
-	    const reDate = Student.reverseDate(date)
+            const reDate = Student.reverseDate(date)
             const present = new Present(reDate, hourLength, hourCost, note)
-            this.present.push(present)  
+            this.present.push(present)
             this.present = this.bubbleSort(this.present)
             this.present.reverse()
+            return true
         }
     }
 }
