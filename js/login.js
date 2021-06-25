@@ -12,6 +12,14 @@ function sendData(e) {
             if (responseText == "went fine") {
                 window.open("http://localhost/index.html", "_self");
             }
+            const regex = new RegExp("Could not get Token", "ig")
+            if (regex.test(responseText)) {
+                window.open("http://localhost/php/error.php?error=true", "_self");
+            }
+            const regex = new RegExp("Could not set Token", "ig")
+            if (regex.test(responseText)) {
+                window.open("http://localhost/php/error.php?error=true", "_self");
+            }
         }
     });
     xmlhttp0.open('POST', "php/login.php", true);
