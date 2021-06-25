@@ -10,6 +10,10 @@ let st = {
                 if (responseText == "Not right Token") {
                     window.open("http://localhost/login.html", "_self");
                 }
+                const regex = new RegExp("Could not set Data", "ig")
+                if (regex.test(responseText)) {
+                    window.open("http://localhost/php/error.php?error=true", "_self");
+                }
             }
         });
         xmlhttp0.open('POST', "php/set.php", true);
