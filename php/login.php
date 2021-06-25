@@ -4,6 +4,10 @@ session_start();
 function validToken() {
     $path = "/home/manuel/xampp_files/token.txt";
     $token = file_get_contents($path);
+    if($token == false || empty($token)) {
+        echo "Could not get Token";
+        exit();
+    }
     $token = @openssl_decrypt($token, "aes-256-ctr", "Password");
     if (!isset($_SESSION["token"])) {
         return false;
@@ -23,7 +27,10 @@ function setNewToken() {
 
     $cipher = "aes-256-ctr";
     $encryptedToken = @openssl_encrypt($token, $cipher, "Password");
-    file_put_contents($path, $encryptedToken);
+    if (!file_put_contents($path, $encryptedToken)) {
+        echo "Could not set Token";
+        exit();
+    }
 }
 
 if (isset($_POST["name"], $_POST["password"])) {
@@ -34,5 +41,4 @@ if (isset($_POST["name"], $_POST["password"])) {
         echo "somenthing went wrong";
     }
 }
-
 
