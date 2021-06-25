@@ -2,6 +2,7 @@ let studentSearch = []
 let st = {
     allStudents: [],
     updateStudents: function() {
+        let sortedArray = sortStudents(this.allStudents)
         var xmlhttp0 = new XMLHttpRequest();
         xmlhttp0.addEventListener('readystatechange', (e) => {
             if (xmlhttp0.readyState==4 && xmlhttp0.status==200) {
@@ -14,7 +15,7 @@ let st = {
         xmlhttp0.open('POST', "php/set.php", true);
         xmlhttp0.setRequestHeader("Content-type", 
             "application/x-www-form-urlencoded");
-        xmlhttp0.send("data=" + JSON.stringify(this.allStudents));
+        xmlhttp0.send("data=" + JSON.stringify(sortedArray));
     },
     setData: function() {
         this.updateStudents()
@@ -25,6 +26,24 @@ let st = {
     get students() {
         return this.allStudents
     }
+}
+
+function sortStudents(array) {
+    let sortedNameArray = Array()
+    for (let i = 0; i < array.length; i++) {
+        sortedNameArray.push(array[i].name + "{" + i + "}")
+    }
+    sortedNameArray.sort()
+    
+    let newArray = Array()
+    for (let i = 0; i < sortedNameArray.length; i++) {
+        const findIndexReg = new RegExp("{[0-9]+}")
+        let indexWrapper = findIndexReg.exec(sortedNameArray[i]) 
+        const removeWrapperReg = new RegExp("({|})", "g")
+        let index = Number(indexWrapper[0].replace(removeWrapperReg, ""))
+        newArray.push(array[index]) 
+    }
+    return newArray
 }
 
 class Present {
