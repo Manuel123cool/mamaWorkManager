@@ -16,8 +16,8 @@ function sendData(e) {
             if (regex.test(responseText)) {
                 window.open("http://localhost/php/error.php?error=true", "_self");
             }
-            const regex = new RegExp("Could not set Token", "ig")
-            if (regex.test(responseText)) {
+            const regex1 = new RegExp("Could not set Token", "ig")
+            if (regex1.test(responseText)) {
                 window.open("http://localhost/php/error.php?error=true", "_self");
             }
         }
