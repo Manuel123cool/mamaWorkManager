@@ -327,6 +327,7 @@ function drawHourlength() {
     addRadioButton("45 Minuten", form)
     addRadioButton("60 Minuten", form)
     addRadioButton("90 Minuten", form)
+    addRadioButton("Nichts", form)
     wrapper.appendChild(form) 
 }
 
@@ -551,6 +552,7 @@ function drawCotractCheckBox() {
     addRadioButton("HV 18x60 Min/Mon S", form)
     addRadioButton("Einzelstunde Überweisung", form)
     addRadioButton("Einzelstunde Bar", form)
+    addRadioButton("Nichts", form)
 
     wrapper.appendChild(form) 
 }
@@ -561,6 +563,7 @@ function drawFondCheckBox() {
     
     addRadioButton("Ja", form)
     addRadioButton("Nein", form)
+    addRadioButton("Nichts", form)
     wrapper.appendChild(form) 
 
 }
@@ -575,6 +578,7 @@ function drawHourCostCheckBox() {
     addRadioButton("60 Min Salutogenese", form)
     addRadioButton("60 Min Supervision", form)
     addRadioButton("Siehe Hinweise", form)
+    addRadioButton("Nichts", form)
     wrapper.appendChild(form) 
 }
 
@@ -632,11 +636,15 @@ function addRadioButton(name, form) {
 }
 
 function handleCheckBox(e) {
+    let newValue = e.currentTarget.value
+    if (newValue == "Nichts") {
+        newValue = ""
+    }
+
     st.students[changeTextData.studentIndex].
-        changeWidthIndex(changeTextData.whichField, 
-            e.currentTarget.value)
+        changeWidthIndex(changeTextData.whichField, newValue)
     st.setData()
-    changeTextData.target.innerHTML = e.currentTarget.value 
+    changeTextData.target.innerHTML = newValue 
 }
 
 function addMakeSmallButton() {
