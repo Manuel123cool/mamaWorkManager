@@ -9,6 +9,6 @@ if (xmlhttp0.readyState==4 && xmlhttp0.status==200) {
     } 
 }
 });
-xmlhttp0.open('GET', "php/get.php?data=true", true);
+xmlhttp0.open('GET', "php/get.php?data=false", true);
 xmlhttp0.send(); 
 
