@@ -431,9 +431,9 @@ function showPresents() {
 
 function handleTranferDate(e) {
     let value = e.currentTarget.value
-    st.students[changeTextData.studentIndex].transferDate = Student.reverseDate(value)
+    st.students[changeTextData.studentIndex].transferDate = value
     st.setData()
-    changeTextData.target.innerHTML = value
+    changeTextData.target.innerHTML = Student.reverseDate(value)
 }
 
 function drawDateSelector() {
