@@ -76,7 +76,7 @@ function addStudentBig(index) {
 
     let transferDate = st.students[index].transferDate
     if (transferDate != "") {
-        Student.reverseDate(st.students[index].transferDate)
+        transferDate = Student.reverseDate(st.students[index].transferDate)
     }
     let tableRow7 = tableMan.addTr(table)
     tableMan.addTd(transferDate, tableRow7, true)
@@ -431,8 +431,7 @@ function showPresents() {
 
 function handleTranferDate(e) {
     let value = e.currentTarget.value
-    value = Student.reverseDate(value)
-    st.students[changeTextData.studentIndex].transferDate = value
+    st.students[changeTextData.studentIndex].transferDate = Student.reverseDate(value)
     st.setData()
     changeTextData.target.innerHTML = value
 }
