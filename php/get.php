@@ -7,7 +7,7 @@ if (isset($_GET["data"]) && validToken()) {
     }
     $path = "/home/manuel/xampp_files/data.txt";
     $data = file_get_contents($path);
-    if($data == false && !empty($data)) {
+    if($data == false || empty($data)) {
         echo "Could not get Data";
     }
     echo $data;
