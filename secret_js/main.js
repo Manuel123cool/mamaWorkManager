@@ -353,6 +353,20 @@ function drawTranferDateSelector() {
     wrapper.appendChild(input)
     input.addEventListener("input", handleTranferDate);
     input.addEventListener("click", handleTranferDate);
+    
+    let button = document.createElement("button")
+    button.setAttribute("type", "button")
+    button.setAttribute("id", "delTransferDate")
+    button.innerHTML = "Datum leer machen"
+    wrapper.appendChild(button)
+
+    button.addEventListener("click", handleDelTransferDate);
+}
+
+function handleDelTransferDate(e) {
+    st.students[changeTextData.studentIndex].transferDate = ""
+    st.setData()
+    changeTextData.target.innerHTML = ""
 }
 
 function showMoreFromPresent(e) {
@@ -417,9 +431,10 @@ function showPresents() {
 
 function handleTranferDate(e) {
     let value = e.currentTarget.value
+    value = Student.reverseDate(value)
     st.students[changeTextData.studentIndex].transferDate = value
     st.setData()
-    changeTextData.target.innerHTML = Student.reverseDate(value)
+    changeTextData.target.innerHTML = value
 }
 
 function drawDateSelector() {
