@@ -721,11 +721,11 @@ function init() {
     xmlhttp0.addEventListener('readystatechange', (e) => {
         if (xmlhttp0.readyState==4 && xmlhttp0.status==200) {
             let responseText = xmlhttp0.responseText;
-            console.log(responseText)
-            if (responseText == "Not right Token") {
+            
+            const regex1 = new RegExp("Not right Token", "ig")
+            if (regex1.test(responseText)) {
                 window.open("http://localhost/login.html", "_self");
-            } 
-      
+            }
             const regex = new RegExp("Could not get Data", "ig")
             if (regex.test(responseText)) {
                 window.open("http://localhost/php/error.php?error=true", "_self");
