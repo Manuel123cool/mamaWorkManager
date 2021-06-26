@@ -6,7 +6,6 @@ function validToken() {
     $token = file_get_contents($path);
     if($token == false || empty($token)) {
         echo "Could not get Token";
-        exit();
     }
     $token = @openssl_decrypt($token, "aes-256-ctr", "Password");
     if (!isset($_SESSION["token"])) {
@@ -29,7 +28,6 @@ function setNewToken() {
     $encryptedToken = @openssl_encrypt($token, $cipher, "Password");
     if (!file_put_contents($path, $encryptedToken)) {
         echo "Could not set Token";
-        exit();
     }
 }
 
