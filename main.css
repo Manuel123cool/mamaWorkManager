@@ -115,3 +115,7 @@ textarea {
 .presentClickColorNot {
     background-color: rgb(218, 157, 250);
 }
+
+#delTransferDate {
+    background-color: orange;
+}
