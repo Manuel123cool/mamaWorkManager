@@ -1,0 +1,87 @@
+body {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background-color: rgb(198, 195, 195);
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    width: 33.3%;
+    height: 20px;
+}
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#table_wrapper {
+    height: 600px;
+    overflow: auto
+}
+button {
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    margin-right: 20px;
+}
+
+#button_wrapper button {
+    background-color: gray;
+}
+
+#edit_wrapper .hourCount {
+    background-color: red;
+}
+#addDate {
+    background-color: orange;
+}
+
+#button_wrapper button:hover {
+    background-color: rgb(207, 215, 227);
+}
+
+.show_more:hover {
+    background-color: rgb(71, 58, 183);
+}
+
+.statsBackground {
+    background-color: rgb(58, 170, 183);
+}
+.clickedForEdit {
+    background-color: rgb(82, 143, 27);
+}
+
+button {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 50%;
+    height: 20;
+    resize: none;
+}
+
+.label {
+    display: block;
+}
+
+#date {
+    margin-bottom: 20px;
+    display: block;
+}
+
+#present_wrapper div {
+    border: 1px solid black;
+    display: inline-block;
+    margin: 0px 10px 5px 0px;
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#present_wrapper p {
+    display: block;
+    margin: 0px;
+}
