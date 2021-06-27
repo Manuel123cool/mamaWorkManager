@@ -6,7 +6,6 @@ function validToken() {
     $token = file_get_contents($path);
     if($token == false || empty($token)) {
         echo "Could not get Token";
-        exit();
     }
     $token = @openssl_decrypt($token, "aes-256-ctr", "Password");
     if (!isset($_SESSION["token"])) {
