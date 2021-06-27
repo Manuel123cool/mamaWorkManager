@@ -17,7 +17,7 @@ def newDateToFile():
 if len(sys.argv) > 1:
     newDateToFile()
 
-if nowTime - 1440 < float(latestBackup): 
+if nowTime - 86400 < float(latestBackup): 
     sys.exit()    
 
 currentStateFile = open("/path/to/file/data.txt", "r")
