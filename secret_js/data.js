@@ -53,7 +53,6 @@ function sortStudents(array) {
 
 class Present {
     constructor(date, hourLength, hourCost, note) {
-        st.setData()
         this.date = date
         this.hourLength = hourLength
         this.hourCost = hourCost
