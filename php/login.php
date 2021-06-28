@@ -5,16 +5,14 @@ function validLoginData() {
     return validSession() && validIpAddress() && validCookie();
 }
 
-function validCookie() {
-    $path = "/home/manuel/xampp_files/login_data.txt";
+function getLine($lineCount) {
+    $path = "/home/manuel/server_data/login_data.txt";
     $handle = fopen($path, "r");
-    $token = null;
     if ($handle) {
         $count = 0;
         while (($line = fgets($handle)) !== false) {
-            if ($count == 1) {
-                    $token = $line;
-                    break;
+            if ($count == $lineCount) {
+                return $line;
             }
             $count++;
         }
@@ -22,6 +20,10 @@ function validCookie() {
     } else {
         echo "Could not get login data";
     }
+}
+
+function validCookie() {
+    $token = getLine(1);
     $token = @openssl_decrypt($token, "aes-256-ctr", "Password");
     if (!isset($_COOKIE["token"])) {
         return false;
@@ -33,22 +35,7 @@ function validCookie() {
 }
 
  function validSession() {
-    $path = "/home/manuel/xampp_files/login_data.txt";
-    $handle = fopen($path, "r");
-    $token = null;
-    if ($handle) {
-        $count = 0;
-        while (($line = fgets($handle)) !== false) {
-            if ($count == 0) {
-                $token = $line;
-                break;
-            }
-            $count++;
-        }
-        fclose($handle);
-    } else {
-        echo "Could not get login data";
-    }
+    $token = getLine(0);
     $token = @openssl_decrypt($token, "aes-256-ctr", "Password");
     if (!isset($_SESSION["token"])) {
         return false;
@@ -60,22 +47,7 @@ function validCookie() {
 }
 
 function validIpAddress() {
-    $path = "/home/manuel/xampp_files/login_data.txt";
-    $handle = fopen($path, "r");
-    $ipAddress = null;
-    if ($handle) {
-        $count = 0;
-        while (($line = fgets($handle)) !== false) {
-                if ($count == 2) {
-                    $ipAddress = $line;
-                    break;
-                }
-                $count++;
-        }
-        fclose($handle);
-    } else {
-            echo "Could not get login data";
-    }
+    $ipAddress = getLione(2);
     $ipAddress = @openssl_decrypt($ipAddress, "aes-256-ctr", "Password");
     if ($ipAddress === getIpAddress()) {
         return true;
