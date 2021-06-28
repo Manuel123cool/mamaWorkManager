@@ -124,11 +124,32 @@ function setupLoginData() {
     fclose($file);
 }
 
+function countTries() {
+    $path = "/home/manuel/xampp_files/tries.txt";
+    $tries = file_get_contents($path);
+    $tries = (int)$tries;
+    if ($tries > 20) {
+        return false;
+    }
+    return true;
+}
+
+function addTry() {
+    $path = "/home/manuel/xampp_files/tries.txt";
+    $tries = file_get_contents($path);
+    $tries = (int)$tries;
+    file_put_contents($path, $tries + 1); 
+}
+
 if (isset($_POST["name"], $_POST["password"])) {
     if ($_POST["name"] === "Name" && $_POST["password"] === "Password") {
-        setupLoginData();
-        echo "went fine";
+        if (countTries()) {
+            setupLoginData();
+            echo "went fine";
+        }
     } else {
+        addTry();
         echo "somenthing went wrong";
     }
 }
+
