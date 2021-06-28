@@ -128,7 +128,7 @@ function countTries() {
     $path = "/home/manuel/xampp_files/tries.txt";
     $tries = file_get_contents($path);
     $tries = (int)$tries;
-    if ($tries > 20) {
+    if ($tries > 10) {
         return false;
     }
     return true;
