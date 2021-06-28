@@ -1,7 +1,7 @@
 <?php
 include "login.php";
 
-if (validToken()) {
+if (validLoginData()) {
     exec("/your/path/to/file/pdfgen.py");
     $file = "/your/path/to/file/daten.pdf";
     header('Content-Description: File Transfer');
