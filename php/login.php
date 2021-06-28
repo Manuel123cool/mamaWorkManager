@@ -47,7 +47,7 @@ function validCookie() {
 }
 
 function validIpAddress() {
-    $ipAddress = getLione(2);
+    $ipAddress = getLine(2);
     $ipAddress = @openssl_decrypt($ipAddress, "aes-256-ctr", "Password");
     if ($ipAddress === getIpAddress()) {
         return true;
