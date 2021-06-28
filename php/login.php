@@ -97,7 +97,7 @@ function setupLoginData() {
 }
 
 function countTries() {
-    //* * */1 * * echo "0" > /home/manuel/server_data/tries.txt 1> /dev/null 2> /home/manuel/crontab_status/re_triesTo0.err
+    //0 0 * * * echo "0" > /home/manuel/xampp_files/tries.txt
     $path = "/home/manuel/xampp_files/tries.txt";
     $tries = file_get_contents($path);
     $tries = (int)$tries;
