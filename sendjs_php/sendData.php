@@ -1,7 +1,7 @@
 <?php
-include "login.php";
+include "/your/path/login.php";
 
-if (validToken()) {
+if (validLoginData()) {
         header('Content-Type: text/javascript');
         echo file_get_contents('/home/manuel/secret_js/data.js');
 } else {
