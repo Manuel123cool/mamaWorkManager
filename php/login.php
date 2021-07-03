@@ -115,7 +115,7 @@ function addTry() {
 }
 
 if (isset($_POST["name"], $_POST["password"])) {
-    if ($_POST["name"] === "Name" && $_POST["password"] === "Password") {
+    if (hash_equals("Name", $_POST["name"]) && hash_equals("Password", $_POST["password"])) {
         if (countTries()) {
             setupLoginData();
             echo "went fine";
