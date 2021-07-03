@@ -28,7 +28,7 @@ function validCookie() {
     if (!isset($_COOKIE["token"])) {
         return false;
     }
-    if (hash_equals($_COOKIE["token"], $token)) {
+    if (hash_equals($token, $_COOKIE["token"])) {
         return true;
     }
     return false;
@@ -40,7 +40,7 @@ function validCookie() {
     if (!isset($_SESSION["token"])) {
         return false;
     }
-    if (hash_equals($_SESSION["token"], $token)) {
+    if (hash_equals($token, $_SESSION["token"])) {
         return true;
     }
     return false;
@@ -49,7 +49,7 @@ function validCookie() {
 function validIpAddress() {
     $ipAddress = getLine(2);
     $ipAddress = @openssl_decrypt($ipAddress, "aes-256-ctr", "Password");
-    if (hash_equals($ipAddress, getIpAddress())) {
+    if (hash_equals(getIpAddress(), $ipAddress)) {
         return true;
     }
     return false;
