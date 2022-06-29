@@ -1,7 +1,7 @@
 <?php
 include "login.php";
 
-if (isset($_GET["data"]) && validLoginData())) {
+if (isset($_GET["data"]) && validLoginData()) {
     if ($_GET["data"] == "false") {
         exit();
     }
