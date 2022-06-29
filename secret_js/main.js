@@ -514,13 +514,11 @@ function handleNewDate(e) {
     if (wrapper.childElementCount > 3) {
         document.getElementById("deleteDateInput").remove()
     }
-    const newValue = 
-        Student.reverseDate(document.getElementById("date").value)
+    const newValue = document.getElementById("date").value
     const index = changeTextData.studentIndex
     const hourLength = st.students[index].hourLength
     const hourCost = st.students[index].hourCost
     const note = st.students[index].presentNote
-    st.students[index].addPresentDate(newValue, hourLength, hourCost, note) 
     if (!st.students[index].addPresentDate(newValue, hourLength,
             hourCost, note)) {
         return
